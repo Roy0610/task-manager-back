@@ -1,4 +1,4 @@
-package me.rsroy0610.model;
+package jp.co.task.model;
 
 public enum Status {
     PENDING,
