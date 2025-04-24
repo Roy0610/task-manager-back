@@ -2,6 +2,8 @@ package jp.co.task.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Task {
 
@@ -9,7 +11,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false) // ← title は必須！
+    @Column(nullable = false) //title は必須項目
     private String title;
 
     @Enumerated(EnumType.STRING)
@@ -18,6 +20,12 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
+
+    @Column
+    private String assignee;
+
+    @Column
+    private LocalDateTime deadline;
 
     // --- getter/setter ---
     public Long getId() { return id; }
@@ -31,4 +39,22 @@ public class Task {
 
     public Project getProject() { return project; }
     public void setProject(Project project) { this.project = project; }
+
+    //2025-04-24 追加
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDateTime deadline) {
+        this.deadline = deadline;
+    }
+
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
+    }
+
 }
