@@ -1,2 +1,2 @@
-rootProject.name = "task-manager"
+rootProject.name = "task-manager-back"
 
