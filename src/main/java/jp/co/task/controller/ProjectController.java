@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/projects")
@@ -22,5 +24,10 @@ public class ProjectController {
     @PostMapping
     public Project createProject(@Valid @RequestBody Project project) {
         return projectRepository.save(project);
+    }
+
+    @GetMapping
+    public List<Project> getProjects() {
+        return projectRepository.findAll();
     }
 }

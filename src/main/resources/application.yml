@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/task_manager
+    username: task_manager
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none  # SQLファイルでテーブル作成する場合は none にする
+  sql:
+    init:
+      mode: always
+      schema-locations:
+        - classpath:sql/projects.sql
+        - classpath:sql/tasks.sql
