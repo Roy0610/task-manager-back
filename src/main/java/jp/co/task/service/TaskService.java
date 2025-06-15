@@ -25,17 +25,17 @@ public class TaskService {
 
     public Task createTask(Long projectId, Task task) {
         Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found"));
+                .orElseThrow(() -> new RuntimeException("プロジェクトが見つかりません"));
         task.setProject(project);
         return taskRepository.save(task);
     }
 
     public Task updateTask(Long projectId, Long taskId, Task taskDetails) {
         Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new RuntimeException("Task not found"));
+                .orElseThrow(() -> new RuntimeException("タスクが見つかりません"));
 
         if (!task.getProject().getId().equals(projectId)) {
-            throw new RuntimeException("Project mismatch");
+            throw new RuntimeException("プロジェクトの不一致");
         }
 
         task.setTitle(taskDetails.getTitle());
